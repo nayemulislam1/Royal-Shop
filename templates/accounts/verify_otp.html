@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %} OTP verify {% endblock %}
+{% block body %}
+<!-- offcanvas overlay start -->
+<div class="offcanvas-overlay"></div>
+<!-- offcanvas overlay end -->
+
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title">OTP Verification</h2>
+                <!-- breadcrumb-list start -->
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active">OTP Verification</li>
+                </ul>
+                <!-- breadcrumb-list end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area end -->
+<!-- login area start -->
+<div class="login-register-area pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+
+                        <p >
+                            <h3>We've sent a verfication code to your email:- <b></b> </h3>
+                        </p>
+                      
+                    </div>
+                    <p>
+                        <h4></h4>
+                    </p>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+
+                            </div>
+                        </div>
+                        <div id="lg2" class="tab-pane">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                      {% if messages %}
+<ul class="messages" style="color:red; font-size:20px; ">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input name="email" placeholder="Enter your Email" type="email"/>   
+                                        <input name="otp" placeholder="Enter OTP code" type="number" /> 
+                                        <input type="password" name="pass" placeholder="Password" />
+                                        <div class="button-box">
+                                            <button type="submit"><span>Confirm</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
